@@ -117,6 +117,18 @@ public class PickUpObjects : Forte_Interactable
         }
     }
 
+    public void VibrateHand(float hapticStrength)
+    {
+        if (heldObjectHapticOn && grabbingHand != null)
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                HapticController haptics = grabbingHand.GetComponent<HapticController>();
+                haptics.HapticPulse(i, hapticStrength);
+            }
+        }
+    }
+
     /// Limits the max throw velocity so that objects don't get thrown too far.
     /**
      */

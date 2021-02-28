@@ -77,7 +77,10 @@ public class RippleDeformer : MonoBehaviour {
 
 		if (!InvertedEffector) {
 			for (int i = 0; i < originalVertices.Length; i++) {
-				if (Vector3.Distance (transform.TransformPoint (originalVertices [i]), Effector.transform.position) <= EffectorDistance) { 
+				if (Vector3.Distance (transform.TransformPoint (originalVertices [i]), Effector.transform.position) <= EffectorDistance) {
+/*					// Vibrate hand
+					FindObjectOfType<DentalDrill>().drilling = true;*/
+
 					float dist = Vector3.Distance (transform.TransformPoint (originalVertices [i]), Effector.transform.position);
 					normalizedCurve = dist / EffectorDistance;
 					curveValue = Refinecurve.Evaluate (normalizedCurve);
@@ -122,7 +125,9 @@ public class RippleDeformer : MonoBehaviour {
 					originalVertices[i] = newvertPos;
 					
 				} else {
-					
+					// Don't vibrate hand
+					//FindObjectOfType<DentalDrill>().drilling = false;
+
 					displacedVertices [i] = originalVertices [i];
 					
 				}
