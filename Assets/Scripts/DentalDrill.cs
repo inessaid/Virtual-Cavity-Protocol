@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DentalDrill : MonoBehaviour
 {
-    public float hapticStrength = 0.5f;
+    public int note = 64;
+    public float amplitude = 0.5f;
     public bool drilling = false;
 
     private HapticController haptics;
@@ -25,6 +26,6 @@ public class DentalDrill : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (drilling) GetComponent<PickUpObjects>().VibrateHand(hapticStrength);
+        if (drilling) GetComponent<PickUpObjects>().VibrateHand(note, amplitude);
     }
 }

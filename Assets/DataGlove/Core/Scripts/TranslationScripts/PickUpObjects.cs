@@ -117,15 +117,12 @@ public class PickUpObjects : Forte_Interactable
         }
     }
 
-    public void VibrateHand(float hapticStrength)
+    public void VibrateHand(int note, float amplitude)
     {
         if (heldObjectHapticOn && grabbingHand != null)
         {
-            for (int i = 0; i < 6; i++)
-            {
-                HapticController haptics = grabbingHand.GetComponent<HapticController>();
-                haptics.HapticPulse(i, hapticStrength);
-            }
+            HapticController haptics = grabbingHand.GetComponent<HapticController>();
+            haptics.LoopAllFingers(note, amplitude);
         }
     }
 
